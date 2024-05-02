@@ -10,7 +10,7 @@ export default function Router({ setMode }) {
       path: '/',
       element: <Outlet />,
       children: [
-        { element: <Navigate to="todo" />, index: true },
+        { element: <Navigate to="/todo" />, index: true },
         { path: 'todo', element: <TodoList /> },
       ],
     },
@@ -23,4 +23,4 @@ export default function Router({ setMode }) {
   return <Suspense fallback={<LoadPage></LoadPage>}>{routes}</Suspense>
 }
 
-const NotFound = () => <h1>404 Not Found</h1>
+const NotFound = () => <h1>404 Not Found.</h1>
