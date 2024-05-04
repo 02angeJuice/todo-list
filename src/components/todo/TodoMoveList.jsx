@@ -14,7 +14,7 @@ export default function TodoMoveList() {
     <Box component={Grid} container spacing={2}>
       {store?.types?.map((type, idx) => {
         return (
-          <Grid key={idx} item xs={12} md={6}>
+          <Grid key={idx} item xs={6} md={6}>
             <Typography align="center" py="5px" fontSize="20px" bgcolor="#eee">
               {type}
             </Typography>
@@ -25,7 +25,6 @@ export default function TodoMoveList() {
               p="10px"
               sx={{ border: '1px solid #eee' }}
             >
-              <Grid item xs={12}></Grid>
               {store?.slots?.map((item, idx) => {
                 if (item?.type === type) {
                   return <TodoItem key={idx} item={item} type="move" />
