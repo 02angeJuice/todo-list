@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react"
 
-import Grid from '@mui/material/Grid'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import Grid from "@mui/material/Grid"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
 
-import TodoItem from './TodoItem'
-import { useBoundStore } from '../../store'
+import TodoItem from "./TodoItem"
+import { useBoundStore } from "../../store"
 
 export default function TodoMoveList() {
   const store = useBoundStore()
@@ -23,7 +23,7 @@ export default function TodoMoveList() {
               container
               gap="10px"
               p="10px"
-              sx={{ border: '1px solid #eee' }}
+              sx={{ border: "1px solid #eee" }}
             >
               {store?.slots?.map((item, idx) => {
                 if (item?.type === type) {

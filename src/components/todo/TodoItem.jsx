@@ -1,24 +1,22 @@
-import React, { useCallback } from 'react'
-import _debounce from 'lodash/debounce'
+import React from "react"
 
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import { useBoundStore } from '../../store'
+import Grid from "@mui/material/Grid"
+import Button from "@mui/material/Button"
+import { useBoundStore } from "../../store"
 
 export default function TodoItem({ item, type }) {
   const store = useBoundStore()
 
-  const debounceFn = useCallback(
-    _debounce(() => {
-      store?.setTouch(false)
-    }, 5000),
-    []
-  )
-
   const handleAddSlots = () => {
-    store?.setTouch(true)
-    type === 'move' ? store?.removeSlots(item) : store?.addSlots(item)
-    debounceFn()
+    if (type === "move") {
+      store?.removeSlots(item)
+    } else {
+      store?.addSlots(item)
+
+      setTimeout(() => {
+        store?.removeSlots(item)
+      }, 5000)
+    }
   }
 
   return (
@@ -28,11 +26,11 @@ export default function TodoItem({ item, type }) {
         variant="outlined"
         fullWidth
         sx={{
-          py: '5px',
-          textTransform: 'none',
-          color: '#000',
-          fontSize: '20px',
-          border: '1px solid #CCC',
+          py: "5px",
+          textTransform: "none",
+          color: "#000",
+          fontSize: "20px",
+          border: "1px solid #CCC",
         }}
       >
         {item?.name}
